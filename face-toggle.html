@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Toggle App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .face {
+            font-size: 150px;
+            margin: 30px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .face:hover {
+            transform: scale(1.1);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .mood-text {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bipolärknappen</h1>
+        <div class="face" id="faceEmoji">😊</div>
+        <button id="toggleButton" onclick="toggleFace()">Change Mood</button>
+        <div class="mood-text" id="moodText">Glad!</div>
+    </div>
+
+    <script>
+        // This variable keeps track of whether we're currently happy or sad
+        let isHappy = true;
+        
+        // This function runs when you click the button
+        function toggleFace() {
+            // Get references to the elements we want to change
+            const faceEmoji = document.getElementById('faceEmoji');
+            const moodText = document.getElementById('moodText');
+            
+            // Check current state and switch to the opposite
+            if (isHappy) {
+                // Change to sad
+                faceEmoji.textContent = '☹️';
+                moodText.textContent = 'Lessen...';
+                moodText.style.color = '#e74c3c';
+            } else {
+                // Change to happy
+                faceEmoji.textContent = '😊';
+                moodText.textContent = 'Glad!';
+                moodText.style.color = '#555';
+            }
+            
+            // Toggle the state for next time
+            isHappy = !isHappy;
+        }
+    </script>
+</body>
+</html>
